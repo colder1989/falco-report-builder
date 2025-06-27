@@ -74,7 +74,11 @@ export default {
 					professional: '#f8fafc',
 					'professional-light': '#f1f5f9',
 					dark: '#0f172a',
-					charcoal: '#374151'
+					charcoal: '#374151',
+					// Removing all beige colors and replacing with professional greys
+					beige: '#f8fafc',
+					'beige-light': '#f1f5f9',
+					'beige-dark': '#e2e8f0'
 				}
 			},
 			borderRadius: {
