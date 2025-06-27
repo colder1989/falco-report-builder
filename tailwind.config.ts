@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -72,9 +71,8 @@ export default {
 					silver: '#94a3b8',
 					'silver-light': '#cbd5e1',
 					cream: '#fefdf8',
-					beige: '#f5f5dc',
-					'beige-light': '#faf9f6',
-					'beige-dark': '#e8e4d1',
+					professional: '#f8fafc',
+					'professional-light': '#f1f5f9',
 					dark: '#0f172a',
 					charcoal: '#374151'
 				}
