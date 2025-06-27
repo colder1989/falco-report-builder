@@ -9,7 +9,8 @@ import { InvestigatedInfoSection } from './dashboard/InvestigatedInfoSection';
 import { MandateDetailsSection } from './dashboard/MandateDetailsSection';
 import { ObservationDaysSection } from './dashboard/ObservationDaysSection';
 import { PhotosSection } from './dashboard/PhotosSection';
-import { GamblingActivitiesSection } from './dashboard/GamblingActivitiesSection';
+import { AdditionalNotesSection } from './dashboard/AdditionalNotesSection';
+import { PhotoManagementSection } from './dashboard/PhotoManagementSection';
 import { ConclusionsSection } from './dashboard/ConclusionsSection';
 import { PrivacySection } from './dashboard/PrivacySection';
 import { ReportPreview } from './dashboard/ReportPreview';
@@ -56,7 +57,7 @@ export const InvestigationDashboard = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 transition-all duration-1000 ${isLoaded ? 'fade-in' : 'opacity-0'}`}>
+    <div className={`min-h-screen bg-gradient-to-br from-falco-beige-light via-slate-50 to-falco-cream transition-all duration-1000 ${isLoaded ? 'fade-in' : 'opacity-0'}`}>
       {/* Enhanced Header */}
       <header className="bg-white/80 backdrop-blur-md border-b border-slate-200/60 shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -72,11 +73,11 @@ export const InvestigationDashboard = () => {
             </div>
             
             <div className="flex items-center space-x-4 slide-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center space-x-2 professional-accent px-3 py-2 rounded-lg">
+              <div className="flex items-center space-x-2 bg-falco-beige/50 border border-falco-beige-dark px-3 py-2 rounded-lg">
                 {getStatusIcon()}
                 <span className="text-sm font-medium">{getStatusText()}</span>
               </div>
-              <Badge variant="outline" className="professional-accent border-slate-300">
+              <Badge variant="outline" className="bg-falco-beige/30 border-falco-beige-dark text-falco-charcoal">
                 {stats.percentage}% Completato
               </Badge>
               <Button
@@ -128,6 +129,13 @@ export const InvestigationDashboard = () => {
                   onUpdate={(mandateDetails) => updateData({ mandateDetails })} 
                 />
               </div>
+
+              <div className="stagger-item">
+                <PhotoManagementSection 
+                  data={data.photoManagement} 
+                  onUpdate={(photoManagement) => updateData({ photoManagement })} 
+                />
+              </div>
               
               <div className="stagger-item">
                 <ObservationDaysSection 
@@ -144,9 +152,9 @@ export const InvestigationDashboard = () => {
               </div>
               
               <div className="stagger-item">
-                <GamblingActivitiesSection 
-                  data={data.gamblingActivities} 
-                  onUpdate={(gamblingActivities) => updateData({ gamblingActivities })} 
+                <AdditionalNotesSection 
+                  data={data.additionalNotes} 
+                  onUpdate={(additionalNotes) => updateData({ additionalNotes })} 
                 />
               </div>
               
@@ -210,14 +218,16 @@ export const InvestigationDashboard = () => {
                       "Compila le informazioni cliente",
                       "Inserisci dati dell'investigato", 
                       "Specifica dettagli del mandato",
+                      "Configura gestione foto",
                       "Aggiungi giorni di osservazione",
                       "Carica foto e documenti",
+                      "Aggiungi note extra se necessario",
                       "Scrivi le conclusioni",
                       "Esporta la relazione finale"
                     ].map((step, index) => (
                       <div 
                         key={index} 
-                        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-slate-50/50 transition-colors duration-200"
+                        className="flex items-center space-x-3 p-2 rounded-lg hover:bg-falco-beige/20 transition-colors duration-200"
                       >
                         <div className="w-6 h-6 bg-falco-navy/10 rounded-full flex items-center justify-center">
                           <span className="text-xs font-medium text-falco-navy">{index + 1}</span>
@@ -236,7 +246,7 @@ export const InvestigationDashboard = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-3 bg-blue-50/50 rounded-lg">
+                    <div className="text-center p-3 bg-falco-beige/30 rounded-lg">
                       <div className="text-2xl font-bold text-falco-navy">{data.observationDays.length}</div>
                       <div className="text-xs text-slate-600">Giorni Osservazione</div>
                     </div>

@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Professional colors for investigation agency - Enhanced
+				// Professional colors for investigation agency
 				falco: {
 					navy: '#1e3a8a',
 					'navy-light': '#3b82f6',
@@ -72,6 +72,9 @@ export default {
 					silver: '#94a3b8',
 					'silver-light': '#cbd5e1',
 					cream: '#fefdf8',
+					beige: '#f5f5dc',
+					'beige-light': '#faf9f6',
+					'beige-dark': '#e8e4d1',
 					dark: '#0f172a',
 					charcoal: '#374151'
 				}

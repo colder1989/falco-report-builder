@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -45,10 +44,14 @@ export const ReportPreview = ({ data, onClose }: ReportPreviewProps) => {
 
         <div className="overflow-y-auto max-h-[calc(90vh-80px)] p-6">
           <div className="space-y-8 max-w-3xl mx-auto">
-            {/* Header */}
+            {/* Header with Logo */}
             <div className="text-center space-y-4">
-              <div className="w-16 h-16 falco-gradient rounded-xl mx-auto flex items-center justify-center mb-4">
-                <FileText className="w-8 h-8 text-white" />
+              <div className="flex justify-center mb-6">
+                <img 
+                  src="/lovable-uploads/ea7672d3-5fe4-45e8-bd81-ca137cc8caa8.png" 
+                  alt="Falco Investigation Logo" 
+                  className="h-24 w-auto"
+                />
               </div>
               <h1 className="text-3xl font-bold text-falco-dark">FALCO INVESTIGATION</h1>
               <h2 className="text-xl font-semibold text-slate-700">Relazione Investigativa Confidenziale</h2>
@@ -150,33 +153,30 @@ export const ReportPreview = ({ data, onClose }: ReportPreviewProps) => {
               </div>
             )}
 
-            {/* Gambling Activities */}
-            {data.gamblingActivities.length > 0 && (
+            {/* Additional Notes */}
+            {data.additionalNotes.notes && (
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-falco-navy">ATTIVITÀ DI GIOCO E SCOMMESSE</h3>
-                {data.gamblingActivities.map((activity, index) => (
-                  <div key={activity.id} className="border-l-4 border-amber-500 pl-4 space-y-2">
-                    <h4 className="font-medium">{activity.location}</h4>
-                    <div className="text-sm space-y-1">
-                      <div><span className="font-medium">Indirizzo:</span> {activity.address}</div>
-                      <div><span className="font-medium">Orario:</span> {formatTime(activity.startTime)} - {formatTime(activity.endTime)}</div>
-                      {activity.description && (
-                        <div><span className="font-medium">Descrizione:</span> {activity.description}</div>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                <h3 className="text-lg font-semibold text-falco-navy">NOTE AGGIUNTIVE</h3>
+                <div className="text-sm whitespace-pre-wrap">{data.additionalNotes.notes}</div>
               </div>
             )}
 
-            {/* Photos */}
+            {/* Photos section based on strategy */}
             {data.photos.length > 0 && (
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-falco-navy">DOCUMENTAZIONE FOTOGRAFICA</h3>
+                <h3 className="text-lg font-semibold text-falco-navy">
+                  {data.photoManagement.photoStrategy === 'separate-dossier' 
+                    ? 'FASCICOLO FOTOGRAFICO' 
+                    : 'DOCUMENTAZIONE FOTOGRAFICA'
+                  }
+                </h3>
                 <div className="text-sm">
                   <p>Numero di foto allegate: {data.photos.length}</p>
                   <p className="text-slate-600 mt-2">
                     Le foto sono conservate in formato digitale e disponibili su richiesta per consultazione.
+                    {data.photoManagement.photoStrategy === 'separate-dossier' && 
+                      ' Tutte le foto sono raccolte in un fascicolo separato allegato alla presente relazione.'
+                    }
                   </p>
                 </div>
               </div>
@@ -201,11 +201,14 @@ export const ReportPreview = ({ data, onClose }: ReportPreviewProps) => {
               </div>
             </div>
 
-            {/* Footer */}
+            {/* Footer with Company Info */}
             <div className="text-center space-y-4 pt-8 border-t border-slate-200">
               <div className="text-sm text-slate-600">
-                <p>Falco Investigation - Agenzia Investigativa Professionale</p>
-                <p>Relazione redatta in conformità alla normativa vigente</p>
+                <p className="font-medium">FALCO INVESTIGATION</p>
+                <p>20124 MILANO (MI) – VIA SABAUDIA 8</p>
+                <p>Tel +39 02 82 19 79 69 - P.Iva IT11535690967</p>
+                <p>Autorizzazione Prefettura Milano Prot. 14816/12B15E Area I OSP</p>
+                <p>milano@falcoinvestigation.it - WWW.INVESTIGATIONFALCO.IT</p>
               </div>
               <div className="text-xs text-slate-500">
                 <p>Documento confidenziale - Vietata la riproduzione e divulgazione a terzi non autorizzati</p>

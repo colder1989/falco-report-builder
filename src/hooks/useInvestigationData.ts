@@ -1,4 +1,3 @@
-
 import { useState, useCallback } from 'react';
 
 export interface ClientInfo {
@@ -69,13 +68,22 @@ export interface Privacy {
   customNotes: string;
 }
 
+export interface AdditionalNotes {
+  notes: string;
+}
+
+export interface PhotoManagement {
+  photoStrategy: 'per-day' | 'separate-dossier';
+}
+
 export interface InvestigationData {
   clientInfo: ClientInfo;
   investigatedInfo: InvestigatedInfo;
   mandateDetails: MandateDetails;
   observationDays: ObservationDay[];
   photos: Photo[];
-  gamblingActivities: GamblingActivity[];
+  additionalNotes: AdditionalNotes;
+  photoManagement: PhotoManagement;
   conclusions: Conclusions;
   privacy: Privacy;
 }
@@ -104,7 +112,12 @@ const initialData: InvestigationData = {
   },
   observationDays: [],
   photos: [],
-  gamblingActivities: [],
+  additionalNotes: {
+    notes: '',
+  },
+  photoManagement: {
+    photoStrategy: 'per-day',
+  },
   conclusions: {
     text: '',
   },
