@@ -56,9 +56,11 @@ export const InvestigationDashboard = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-stone-50 via-stone-25 to-stone-100 transition-all duration-1000 ${isLoaded ? 'fade-in' : 'opacity-0'}`}>
+    <div className={`min-h-screen transition-all duration-1000 ${isLoaded ? 'fade-in' : 'opacity-0'}`} 
+         style={{ background: 'linear-gradient(135deg, #f5f2ed 0%, #faf8f6 50%, #f0ede7 100%)' }}>
       {/* Enhanced Header */}
-      <header className="glass-effect border-b shadow-sm sticky top-0 z-50" style={{ backgroundColor: 'rgb(250, 248, 246, 0.9)' }}>
+      <header className="backdrop-blur-md border-b shadow-sm sticky top-0 z-50" 
+              style={{ backgroundColor: 'rgba(250, 248, 246, 0.95)', borderColor: '#e7e5e4' }}>
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4 slide-in-up">
@@ -72,18 +74,20 @@ export const InvestigationDashboard = () => {
             </div>
             
             <div className="flex items-center space-x-4 slide-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg border" style={{ backgroundColor: 'rgb(245, 242, 237)', borderColor: 'rgb(231, 229, 228)' }}>
+              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg border" 
+                   style={{ backgroundColor: '#f5f2ed', borderColor: '#e7e5e4' }}>
                 {getStatusIcon()}
                 <span className="text-sm font-medium">{getStatusText()}</span>
               </div>
-              <Badge variant="outline" className="border-stone-300 text-slate-700" style={{ backgroundColor: 'rgb(250, 248, 246)' }}>
+              <Badge variant="outline" className="text-slate-700" 
+                     style={{ backgroundColor: '#faf8f6', borderColor: '#d6d3d1' }}>
                 {stats.percentage}% Completato
               </Badge>
               <Button
                 variant="outline"
                 onClick={() => setShowPreview(!showPreview)}
-                className="flex items-center space-x-2 floating-button border-stone-300 hover:bg-stone-100"
-                style={{ backgroundColor: 'rgb(250, 248, 246)' }}
+                className="flex items-center space-x-2 floating-button"
+                style={{ backgroundColor: '#faf8f6', borderColor: '#d6d3d1' }}
               >
                 <Eye className="w-4 h-4" />
                 <span>Anteprima</span>
@@ -199,8 +203,8 @@ export const InvestigationDashboard = () => {
                       variant="outline" 
                       size="sm" 
                       onClick={resetData}
-                      className="w-full floating-button hover:bg-stone-100 border-stone-300"
-                      style={{ backgroundColor: 'rgb(250, 248, 246)' }}
+                      className="w-full floating-button"
+                      style={{ backgroundColor: '#faf8f6', borderColor: '#d6d3d1' }}
                     >
                       <Plus className="w-4 h-4 mr-2" />
                       Nuova Relazione
@@ -247,11 +251,11 @@ export const InvestigationDashboard = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-3 rounded-lg" style={{ backgroundColor: 'rgb(245, 242, 237)' }}>
+                    <div className="text-center p-3 rounded-lg" style={{ backgroundColor: '#f5f2ed' }}>
                       <div className="text-2xl font-bold text-falco-navy">{data.observationDays.length}</div>
                       <div className="text-xs text-slate-600">Giorni Osservazione</div>
                     </div>
-                    <div className="text-center p-3 bg-green-50 rounded-lg">
+                    <div className="text-center p-3 rounded-lg" style={{ backgroundColor: '#e7f5e7' }}>
                       <div className="text-2xl font-bold text-green-600">{data.photos.length}</div>
                       <div className="text-xs text-slate-600">Foto Caricate</div>
                     </div>
