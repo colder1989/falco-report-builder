@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { FileText, Download, Eye, Plus, CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import { FileText, Download, Eye, Plus, CheckCircle, Clock, AlertCircle, Shield, Search } from 'lucide-react';
 import { ClientInfoSection } from './dashboard/ClientInfoSection';
 import { InvestigatedInfoSection } from './dashboard/InvestigatedInfoSection';
 import { MandateDetailsSection } from './dashboard/MandateDetailsSection';
@@ -44,9 +44,9 @@ export const InvestigationDashboard = () => {
   const stats = getCompletionStats();
 
   const getStatusIcon = () => {
-    if (stats.percentage === 100) return <CheckCircle className="w-5 h-5 text-green-600" />;
-    if (stats.percentage >= 50) return <Clock className="w-5 h-5 text-blue-600" />;
-    return <AlertCircle className="w-5 h-5 text-amber-600" />;
+    if (stats.percentage === 100) return <CheckCircle className="w-5 h-5 text-green-400" />;
+    if (stats.percentage >= 50) return <Clock className="w-5 h-5 text-blue-400" />;
+    return <AlertCircle className="w-5 h-5 text-amber-400" />;
   };
 
   const getStatusText = () => {
@@ -55,39 +55,43 @@ export const InvestigationDashboard = () => {
     return "Da Iniziare";
   };
 
+  const getStatusClass = () => {
+    if (stats.percentage === 100) return "status-complete";
+    if (stats.percentage >= 50) return "status-progress";
+    return "status-pending";
+  };
+
   return (
-    <div className={`min-h-screen transition-all duration-1000 ${isLoaded ? 'fade-in' : 'opacity-0'}`} 
-         style={{ background: 'linear-gradient(135deg, #f5f2ed 0%, #faf8f6 50%, #f0ede7 100%)' }}>
-      {/* Enhanced Header */}
-      <header className="backdrop-blur-md border-b shadow-sm sticky top-0 z-50" 
-              style={{ backgroundColor: 'rgba(250, 248, 246, 0.95)', borderColor: '#e7e5e4' }}>
+    <div className={`min-h-screen transition-all duration-1000 ${isLoaded ? 'fade-in' : 'opacity-0'}`}>
+      {/* Professional Investigative Header */}
+      <header className="glass-effect border-b shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4 slide-in-up">
               <div className="w-12 h-12 falco-gradient rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                <FileText className="w-6 h-6 text-white" />
+                <Shield className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-falco-dark">Falco Investigation</h1>
-                <p className="text-slate-600">Dashboard Relazioni Investigative</p>
+                <h1 className="text-2xl font-bold text-slate-100">Falco Investigation</h1>
+                <p className="text-slate-300 flex items-center space-x-2">
+                  <Search className="w-4 h-4" />
+                  <span>Dashboard Relazioni Investigative</span>
+                </p>
               </div>
             </div>
             
             <div className="flex items-center space-x-4 slide-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center space-x-2 px-3 py-2 rounded-lg border" 
-                   style={{ backgroundColor: '#f5f2ed', borderColor: '#e7e5e4' }}>
+              <div className={`flex items-center space-x-2 px-4 py-2 rounded-lg ${getStatusClass()}`}>
                 {getStatusIcon()}
-                <span className="text-sm font-medium">{getStatusText()}</span>
+                <span className="text-sm font-medium text-white">{getStatusText()}</span>
               </div>
-              <Badge variant="outline" className="text-slate-700" 
-                     style={{ backgroundColor: '#faf8f6', borderColor: '#d6d3d1' }}>
+              <Badge className="professional-badge">
                 {stats.percentage}% Completato
               </Badge>
               <Button
                 variant="outline"
                 onClick={() => setShowPreview(!showPreview)}
-                className="flex items-center space-x-2 floating-button"
-                style={{ backgroundColor: '#faf8f6', borderColor: '#d6d3d1' }}
+                className="floating-button flex items-center space-x-2"
               >
                 <Eye className="w-4 h-4" />
                 <span>Anteprima</span>
@@ -177,21 +181,21 @@ export const InvestigationDashboard = () => {
               </div>
             </div>
 
-            {/* Enhanced Sidebar */}
+            {/* Enhanced Professional Sidebar */}
             <div className="space-y-6">
               <Card className="section-card">
                 <CardHeader>
-                  <CardTitle className="text-lg flex items-center space-x-2">
+                  <CardTitle className="text-lg flex items-center space-x-2 text-slate-100">
                     {getStatusIcon()}
                     <span>Stato Relazione</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-slate-600">Progresso Compilazione</span>
-                    <span className="text-sm font-medium text-falco-navy">{stats.completed}/{stats.total}</span>
+                    <span className="text-sm text-slate-300">Progresso Compilazione</span>
+                    <span className="text-sm font-medium text-blue-400">{stats.completed}/{stats.total}</span>
                   </div>
-                  <div className="progress-bar h-3">
+                  <div className="progress-bar">
                     <div 
                       className="progress-fill"
                       style={{ width: `${stats.percentage}%` }}
@@ -204,7 +208,6 @@ export const InvestigationDashboard = () => {
                       size="sm" 
                       onClick={resetData}
                       className="w-full floating-button"
-                      style={{ backgroundColor: '#faf8f6', borderColor: '#d6d3d1' }}
                     >
                       <Plus className="w-4 h-4 mr-2" />
                       Nuova Relazione
@@ -215,7 +218,7 @@ export const InvestigationDashboard = () => {
 
               <Card className="section-card">
                 <CardHeader>
-                  <CardTitle className="text-lg">Guida Professionale</CardTitle>
+                  <CardTitle className="text-lg text-slate-100">Guida Professionale</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="text-sm space-y-3">
@@ -232,32 +235,41 @@ export const InvestigationDashboard = () => {
                     ].map((step, index) => (
                       <div 
                         key={index} 
-                        className="flex items-center space-x-3 p-2 rounded-lg beige-hover transition-colors duration-200"
+                        className="flex items-center space-x-3 p-3 rounded-lg professional-hover"
                       >
-                        <div className="w-6 h-6 bg-falco-navy/10 rounded-full flex items-center justify-center">
-                          <span className="text-xs font-medium text-falco-navy">{index + 1}</span>
+                        <div className={`step-indicator ${index < stats.completed ? 'active' : ''}`}>
+                          {index + 1}
                         </div>
-                        <p className="text-slate-600">{step}</p>
+                        <p className="text-slate-300">{step}</p>
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Quick Stats Card */}
+              {/* Professional Stats Card */}
               <Card className="section-card">
                 <CardHeader>
-                  <CardTitle className="text-lg">Statistiche Rapide</CardTitle>
+                  <CardTitle className="text-lg text-slate-100">Statistiche Investigative</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-3 rounded-lg" style={{ backgroundColor: '#f5f2ed' }}>
-                      <div className="text-2xl font-bold text-falco-navy">{data.observationDays.length}</div>
-                      <div className="text-xs text-slate-600">Giorni Osservazione</div>
+                    <div className="text-center p-4 professional-accent rounded-lg">
+                      <div className="text-2xl font-bold text-blue-400">{data.observationDays.length}</div>
+                      <div className="text-xs text-slate-300">Giorni Osservazione</div>
                     </div>
-                    <div className="text-center p-3 rounded-lg" style={{ backgroundColor: '#e7f5e7' }}>
-                      <div className="text-2xl font-bold text-green-600">{data.photos.length}</div>
-                      <div className="text-xs text-slate-600">Foto Caricate</div>
+                    <div className="text-center p-4 professional-accent rounded-lg">
+                      <div className="text-2xl font-bold text-cyan-400">{data.photos.length}</div>
+                      <div className="text-xs text-slate-300">Foto Caricate</div>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-4 p-3 rounded-lg" style={{ background: 'linear-gradient(145deg, #1e40af 0%, #3b82f6 100%)' }}>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-white">
+                        {data.investigatedInfo.vehicles.length}
+                      </div>
+                      <div className="text-xs text-blue-100">Veicoli Monitorati</div>
                     </div>
                   </div>
                 </CardContent>

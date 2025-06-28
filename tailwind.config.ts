@@ -62,7 +62,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Professional colors for investigation agency with neutral beige theme
+				// Professional investigative color palette
 				falco: {
 					navy: '#1e3a8a',
 					'navy-light': '#3b82f6',
@@ -70,17 +70,24 @@ export default {
 					'steel-light': '#64748b',
 					silver: '#94a3b8',
 					'silver-light': '#cbd5e1',
-					cream: '#fefdf8',
-					professional: '#f8fafc',
-					'professional-light': '#f1f5f9',
+					cream: '#f8fafc',
+					professional: '#f1f5f9',
+					'professional-light': '#e2e8f0',
 					dark: '#0f172a',
-					charcoal: '#374151',
-					// Neutral beige color palette - warm but not yellow
-					beige: '#faf8f6',        // Very light warm beige
-					'beige-light': '#f5f2ed', // Light beige
-					'beige-dark': '#e7e5e4',  // Medium beige
-					'beige-warm': '#f3f0eb',  // Warm beige
-					'beige-cream': '#fefcf9'  // Cream beige
+					charcoal: '#374151'
+				},
+				// Professional steel color system
+				steel: {
+					900: '#0f172a',  // Very dark steel blue
+					800: '#1e293b',  // Dark steel blue  
+					700: '#334155',  // Medium steel blue
+					600: '#475569',  // Light steel blue
+					500: '#64748b',  // Lighter steel blue
+					400: '#94a3b8',  // Very light steel blue
+					300: '#cbd5e1',  // Pale steel blue
+					200: '#e2e8f0',  // Very pale steel blue
+					100: '#f1f5f9',  // Almost white steel
+					50: '#f8fafc'    // White steel
 				}
 			},
 			borderRadius: {
@@ -110,29 +117,34 @@ export default {
 					}
 				},
 				'fade-in': {
-					'0%': { opacity: '0', transform: 'translateY(10px)' },
-					'100%': { opacity: '1', transform: 'translateY(0)' }
+					'0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+					'100%': { opacity: '1', transform: 'translateY(0) scale(1)' }
 				},
 				'slide-up': {
-					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'0%': { opacity: '0', transform: 'translateY(30px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
 				},
 				'scale-in': {
-					'0%': { opacity: '0', transform: 'scale(0.95)' },
+					'0%': { opacity: '0', transform: 'scale(0.9)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
 				},
 				'bounce-subtle': {
 					'0%, 100%': { transform: 'translateY(0)' },
-					'50%': { transform: 'translateY(-4px)' }
+					'50%': { transform: 'translateY(-6px)' }
+				},
+				'glow-pulse': {
+					'0%, 100%': { boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)' },
+					'50%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.3s ease-out',
-				'slide-up': 'slide-up 0.4s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out',
-				'bounce-subtle': 'bounce-subtle 2s ease-in-out infinite'
+				'fade-in': 'fade-in 0.6s ease-out',
+				'slide-up': 'slide-up 0.5s ease-out',
+				'scale-in': 'scale-in 0.3s ease-out',
+				'bounce-subtle': 'bounce-subtle 3s ease-in-out infinite',
+				'glow-pulse': 'glow-pulse 2s ease-in-out infinite'
 			}
 		}
 	},
