@@ -89,11 +89,18 @@
   }
   
   .section-card:hover {
+    background: linear-gradient(145deg, #334155 0%, #475569 100%);
     box-shadow: 
       0 20px 25px -5px rgba(0, 0, 0, 0.4),
       0 10px 10px -5px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(59, 130, 246, 0.2);
     border-color: #3b82f6;
+  }
+  
+  /* Fix for card header hover - keep dark background */
+  .section-card .hover\\:bg-slate-50:hover {
+    background: linear-gradient(145deg, #475569 0%, #64748b 100%) !important;
+    color: #f1f5f9 !important;
   }
   
   /* Professional input styling with visible placeholders */
@@ -171,13 +178,14 @@
   .floating-button {
     background: linear-gradient(145deg, #475569 0%, #64748b 100%);
     border: 1px solid #64748b;
-    color: #f1f5f9;
+    color: #f1f5f9 !important;
     @apply transform transition-all duration-200 hover:scale-105 active:scale-95;
   }
   
   .floating-button:hover {
     background: linear-gradient(145deg, #64748b 0%, #475569 100%);
     border-color: #3b82f6;
+    color: #f1f5f9 !important;
     box-shadow: 
       0 10px 15px -3px rgba(0, 0, 0, 0.3),
       0 0 0 1px rgba(59, 130, 246, 0.3);
@@ -190,14 +198,15 @@
     @apply backdrop-blur-md;
   }
 
-  /* Professional hover states */
+  /* Professional hover states - FIXED */
   .professional-hover {
     @apply transition-all duration-200;
   }
   
   .professional-hover:hover {
-    background: linear-gradient(145deg, #475569 0%, #334155 100%);
+    background: linear-gradient(145deg, #475569 0%, #334155 100%) !important;
     border-color: #3b82f6;
+    color: #f1f5f9 !important;
     transform: translateY(-1px);
   }
 
@@ -258,6 +267,47 @@
   
   .text-accent-visible {
     color: #94a3b8 !important;
+  }
+
+  /* Fix for white backgrounds in dropdowns and selects */
+  .bg-white {
+    background: linear-gradient(145deg, #334155 0%, #475569 100%) !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Fix for select content */
+  [data-radix-select-content] {
+    background: linear-gradient(145deg, #334155 0%, #475569 100%) !important;
+    border: 1px solid #64748b !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Fix for select items */
+  [data-radix-select-item] {
+    color: #f1f5f9 !important;
+  }
+
+  [data-radix-select-item]:hover {
+    background: linear-gradient(145deg, #475569 0%, #64748b 100%) !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Fix for buttons with white backgrounds */
+  .bg-slate-50 {
+    background: linear-gradient(145deg, #475569 0%, #64748b 100%) !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Fix for any remaining white backgrounds */
+  .bg-background {
+    background: linear-gradient(145deg, #334155 0%, #475569 100%) !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Fix for card content areas */
+  .bg-slate-50\/50 {
+    background: linear-gradient(145deg, #334155 0%, #475569 100%) !important;
+    color: #f1f5f9 !important;
   }
 }
 
