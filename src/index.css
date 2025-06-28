@@ -1,19 +1,18 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Professional design system for Falco Investigation - Enhanced */
+/* Professional design system for Falco Investigation - Enhanced with Beige */
 
 @layer base {
   :root {
     --background: 248 250 252;
     --foreground: 15 23 42;
 
-    --card: 255 255 255;
+    --card: 254 252 232;
     --card-foreground: 15 23 42;
 
-    --popover: 255 255 255;
+    --popover: 254 252 232;
     --popover-foreground: 15 23 42;
 
     --primary: 30 58 138;
@@ -45,6 +44,18 @@
     --sidebar-accent-foreground: 15 23 42;
     --sidebar-border: 226 232 240;
     --sidebar-ring: 30 58 138;
+
+    /* Beige color variables */
+    --beige-50: 254 252 232;
+    --beige-100: 254 249 195;
+    --beige-200: 254 240 138;
+    --beige-300: 253 224 71;
+    --beige-400: 250 204 21;
+    --beige-500: 234 179 8;
+    --beige-600: 202 138 4;
+    --beige-700: 161 98 7;
+    --beige-800: 133 77 14;
+    --beige-900: 113 63 18;
   }
 }
 
@@ -65,11 +76,14 @@
 
 @layer components {
   .section-card {
-    @apply bg-white rounded-xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5;
+    background-color: rgb(var(--beige-50));
+    @apply rounded-xl border border-amber-200/60 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5;
+    border-color: rgb(254 240 138 / 0.6);
   }
   
   .professional-input {
-    @apply bg-white border-slate-300 focus:border-falco-navy focus:ring-falco-navy/10 transition-all duration-200 hover:border-slate-400;
+    background-color: rgb(var(--beige-50));
+    @apply border-amber-300 focus:border-falco-navy focus:ring-falco-navy/10 transition-all duration-200 hover:border-amber-400;
   }
   
   .falco-gradient {
@@ -77,7 +91,8 @@
   }
   
   .professional-accent {
-    @apply text-slate-600 border-slate-300 bg-slate-50/50 backdrop-blur-sm;
+    background-color: rgb(var(--beige-100));
+    @apply text-slate-600 border-amber-300 backdrop-blur-sm;
   }
   
   .fade-in {
@@ -95,7 +110,7 @@
   }
   
   .progress-bar {
-    @apply relative overflow-hidden bg-slate-100 rounded-full;
+    @apply relative overflow-hidden bg-amber-100 rounded-full;
   }
   
   .progress-fill {
@@ -109,7 +124,28 @@
   }
   
   .glass-effect {
-    @apply bg-white/70 backdrop-blur-md border border-white/20;
+    background-color: rgb(var(--beige-50) / 0.7);
+    @apply backdrop-blur-md border border-amber-200/20;
+  }
+
+  /* Beige variants for different elements */
+  .beige-card {
+    background-color: rgb(var(--beige-50));
+    @apply border-amber-200;
+  }
+
+  .beige-input {
+    background-color: rgb(var(--beige-50));
+    @apply border-amber-300 focus:border-amber-500;
+  }
+
+  .beige-accent {
+    background-color: rgb(var(--beige-100));
+    @apply border-amber-300;
+  }
+
+  .beige-hover {
+    @apply hover:bg-amber-50 transition-colors duration-200;
   }
 }
 
@@ -202,13 +238,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-100;
+  @apply bg-amber-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-400 rounded-full;
+  @apply bg-amber-400 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-500;
+  @apply bg-amber-500;
 }
