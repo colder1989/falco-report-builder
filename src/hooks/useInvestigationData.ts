@@ -82,6 +82,7 @@ export interface InvestigationData {
   mandateDetails: MandateDetails;
   observationDays: ObservationDay[];
   photos: Photo[];
+  gamblingActivities: GamblingActivity[];
   additionalNotes: AdditionalNotes;
   photoManagement: PhotoManagement;
   conclusions: Conclusions;
@@ -112,6 +113,7 @@ const initialData: InvestigationData = {
   },
   observationDays: [],
   photos: [],
+  gamblingActivities: [],
   additionalNotes: {
     notes: '',
   },

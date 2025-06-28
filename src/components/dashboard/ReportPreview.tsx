@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -166,6 +165,29 @@ export const ReportPreview = ({ data, onClose }: ReportPreviewProps) => {
                           {' '}I luoghi visitati includono: {day.locations.map(loc => `${loc.placeName} (${loc.address})`).join(', ')}.
                         </span>
                       )}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Gambling Activities */}
+            {data.gamblingActivities.length > 0 && (
+              <div className="mb-8">
+                <h3 className="font-bold mb-4 text-base">ATTIVITÀ DI GIOCO E SCOMMESSE</h3>
+                <p className="mb-4">
+                  Durante le attività di osservazione sono state documentate le seguenti attività di gioco e scommesse:
+                </p>
+                
+                {data.gamblingActivities.map((activity, index) => (
+                  <div key={activity.id} className="mb-4">
+                    <p className="text-justify">
+                      <strong>Attività {index + 1}:</strong> {activity.location} 
+                      {activity.address && ` situato in ${activity.address}`}
+                      {activity.startTime && activity.endTime && 
+                        `, dalle ore ${activity.startTime} alle ore ${activity.endTime}`
+                      }.
+                      {activity.description && ` ${activity.description}`}
                     </p>
                   </div>
                 ))}
