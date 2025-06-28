@@ -62,7 +62,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Professional colors for investigation agency with beige theme
+				// Professional colors for investigation agency with neutral beige theme
 				falco: {
 					navy: '#1e3a8a',
 					'navy-light': '#3b82f6',
@@ -75,12 +75,12 @@ export default {
 					'professional-light': '#f1f5f9',
 					dark: '#0f172a',
 					charcoal: '#374151',
-					// Beige color palette
-					beige: '#fef7cd',        // Light warm beige
-					'beige-light': '#fefce8', // Very light beige
-					'beige-dark': '#fde047',  // Slightly darker beige
-					'beige-warm': '#fef3c7',  // Warm beige
-					'beige-cream': '#fffbeb'  // Cream beige
+					// Neutral beige color palette - warm but not yellow
+					beige: '#faf8f6',        // Very light warm beige
+					'beige-light': '#f5f2ed', // Light beige
+					'beige-dark': '#e7e5e4',  // Medium beige
+					'beige-warm': '#f3f0eb',  // Warm beige
+					'beige-cream': '#fefcf9'  // Cream beige
 				}
 			},
 			borderRadius: {

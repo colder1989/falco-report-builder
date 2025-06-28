@@ -9,10 +9,10 @@
     --background: 248 250 252;
     --foreground: 15 23 42;
 
-    --card: 254 252 232;
+    --card: 250 248 246;
     --card-foreground: 15 23 42;
 
-    --popover: 254 252 232;
+    --popover: 250 248 246;
     --popover-foreground: 15 23 42;
 
     --primary: 30 58 138;
@@ -30,8 +30,8 @@
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
 
-    --border: 226 232 240;
-    --input: 226 232 240;
+    --border: 231 229 228;
+    --input: 231 229 228;
     --ring: 30 58 138;
 
     --radius: 0.75rem;
@@ -45,17 +45,13 @@
     --sidebar-border: 226 232 240;
     --sidebar-ring: 30 58 138;
 
-    /* Beige color variables */
-    --beige-50: 254 252 232;
-    --beige-100: 254 249 195;
-    --beige-200: 254 240 138;
-    --beige-300: 253 224 71;
-    --beige-400: 250 204 21;
-    --beige-500: 234 179 8;
-    --beige-600: 202 138 4;
-    --beige-700: 161 98 7;
-    --beige-800: 133 77 14;
-    --beige-900: 113 63 18;
+    /* Beige color variables - neutral warm tones */
+    --beige-50: 250 248 246;   /* Very light warm beige */
+    --beige-100: 245 242 237;  /* Light beige */
+    --beige-200: 231 229 228;  /* Medium light beige */
+    --beige-300: 214 211 209;  /* Medium beige */
+    --beige-400: 168 162 158;  /* Darker beige */
+    --beige-500: 120 113 108;  /* Dark beige */
   }
 }
 
@@ -77,13 +73,14 @@
 @layer components {
   .section-card {
     background-color: rgb(var(--beige-50));
-    @apply rounded-xl border border-amber-200/60 shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5;
-    border-color: rgb(254 240 138 / 0.6);
+    @apply rounded-xl border shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5;
+    border-color: rgb(var(--beige-200));
   }
   
   .professional-input {
     background-color: rgb(var(--beige-50));
-    @apply border-amber-300 focus:border-falco-navy focus:ring-falco-navy/10 transition-all duration-200 hover:border-amber-400;
+    @apply border transition-all duration-200 hover:border-stone-400 focus:border-falco-navy focus:ring-falco-navy/10;
+    border-color: rgb(var(--beige-300));
   }
   
   .falco-gradient {
@@ -92,7 +89,8 @@
   
   .professional-accent {
     background-color: rgb(var(--beige-100));
-    @apply text-slate-600 border-amber-300 backdrop-blur-sm;
+    @apply text-slate-600 border backdrop-blur-sm;
+    border-color: rgb(var(--beige-300));
   }
   
   .fade-in {
@@ -110,7 +108,8 @@
   }
   
   .progress-bar {
-    @apply relative overflow-hidden bg-amber-100 rounded-full;
+    @apply relative overflow-hidden rounded-full;
+    background-color: rgb(var(--beige-200));
   }
   
   .progress-fill {
@@ -125,27 +124,32 @@
   
   .glass-effect {
     background-color: rgb(var(--beige-50) / 0.7);
-    @apply backdrop-blur-md border border-amber-200/20;
+    @apply backdrop-blur-md border;
+    border-color: rgb(var(--beige-200) / 0.2);
   }
 
   /* Beige variants for different elements */
   .beige-card {
     background-color: rgb(var(--beige-50));
-    @apply border-amber-200;
+    border-color: rgb(var(--beige-200));
   }
 
   .beige-input {
     background-color: rgb(var(--beige-50));
-    @apply border-amber-300 focus:border-amber-500;
+    border-color: rgb(var(--beige-300));
   }
 
   .beige-accent {
     background-color: rgb(var(--beige-100));
-    @apply border-amber-300;
+    border-color: rgb(var(--beige-300));
   }
 
   .beige-hover {
-    @apply hover:bg-amber-50 transition-colors duration-200;
+    @apply transition-colors duration-200;
+  }
+  
+  .beige-hover:hover {
+    background-color: rgb(var(--beige-100));
   }
 }
 
@@ -238,13 +242,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-amber-100;
+  background-color: rgb(var(--beige-200));
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-amber-400 rounded-full;
+  background-color: rgb(var(--beige-400));
+  @apply rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-amber-500;
+  background-color: rgb(var(--beige-500));
 }
